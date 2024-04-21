@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">LifeChronicles</string>
+    <string name="app_name" translatable="false">LifeChronicles</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
 </resources>

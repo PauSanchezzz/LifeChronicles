@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LifeChronicles</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="signup">Registrate</string>
+</resources>
