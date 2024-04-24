@@ -3,4 +3,6 @@
     <string name="app_name">LifeChronicles</string>
     <string name="login">Iniciar sesión</string>
     <string name="signup">Registrate</string>
+    <string name="lblHasAccount">¿No tienes cuenta aún?\n¡Crea una ahora!</string>
+    <string name="welcome">¡Bienvenido!</string>
 </resources>
