@@ -4,4 +4,10 @@
     <string name="signup">Sign Up</string>
     <string name="lblHasAccount">Don\'t have an account yet?\nCreate one now!</string>
     <string name="welcome">¡Welcome!</string>
+    <string name="name">Name:</string>
+    <string name="lastName">Last Name:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password:</string>
+    <string name="titleSignUp">¡Sign Up!</string>
+    <string name="lblAccountLogin">Already have an account?\nLog in now</string>
 </resources>
