@@ -142,6 +142,7 @@ fun SignUpScreen() {
                 ) {
                     Text(
                         text = stringResource(id = R.string.signup),
+                        fontSize = 22.sp,
                         color = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier
                             .padding(horizontal = 38.dp)
