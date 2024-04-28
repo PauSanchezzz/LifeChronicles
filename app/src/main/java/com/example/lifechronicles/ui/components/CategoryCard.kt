@@ -23,14 +23,14 @@ import coil.compose.rememberAsyncImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryCard(categoryName: String, imageUrl:String) {
+fun CategoryCard(categoryName: String, imageUrl:String, onClick: () -> Unit) {
     Card(modifier = Modifier.padding(5.dp),
         shape = MaterialTheme.shapes.medium,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onPrimary,
             contentColor = MaterialTheme.colorScheme.primary
         ),
-        onClick = { /*TODO*/ }) {
+        onClick = onClick) {
         Column(
             modifier = Modifier.fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,

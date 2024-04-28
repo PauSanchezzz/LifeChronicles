@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.AppDivider
 import com.example.lifechronicles.ui.components.CategoriesGrid
@@ -24,7 +25,7 @@ import com.example.lifechronicles.ui.components.RecommendationList
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -46,7 +47,7 @@ fun HomeScreen() {
                     fontSize = MaterialTheme.typography.headlineLarge.fontSize,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
-                CategoriesGrid(modifier = Modifier.weight(3F))
+                CategoriesGrid(modifier = Modifier.weight(3F), navController)
                 Text(
                     text = stringResource(id = R.string.recommendations),
                     fontSize = MaterialTheme.typography.headlineMedium.fontSize,

@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.lifechronicles.R
+import com.example.lifechronicles.ui.navigation.AppScreens
 
 @Composable
-fun CategoriesGrid(modifier: Modifier) {
+fun CategoriesGrid(modifier: Modifier, navController: NavController) {
     Card(
         modifier
             .clip(
@@ -43,7 +45,10 @@ fun CategoriesGrid(modifier: Modifier) {
                 ) {
                     CategoryCard(
                         "Category",
-                        "https://i.redd.it/1f8jhybnge6c1.jpeg"
+                        "https://i.redd.it/1f8jhybnge6c1.jpeg",
+                        onClick = {
+                            navController.navigate(AppScreens.EventsListScreen.route)
+                        }
                     )
                 }
             }

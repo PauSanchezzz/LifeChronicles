@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.lifechronicles.ui.screens.EventsListScreen
 import com.example.lifechronicles.ui.screens.HomeScreen
 import com.example.lifechronicles.ui.screens.LogInScreen
 
@@ -15,7 +16,10 @@ fun AppNavigation() {
             LogInScreen()
         }
         composable(route = AppScreens.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(navController)
+        }
+        composable(route = AppScreens.EventsListScreen.route) {
+            EventsListScreen(navController)
         }
     }
 }
