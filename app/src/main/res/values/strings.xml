@@ -10,4 +10,10 @@
     <string name="password">Password:</string>
     <string name="titleSignUp">¡Sign Up!</string>
     <string name="lblAccountLogin">Already have an account?\nLog in now</string>
+    <string name="welcomeUser">Welcome User</string>
+    <string name= "homeTitle">what do you want to do today?</string>
+    <string name="categories">Categories</string>
+    <string name="recommendations">Recommendations</string>
+
+
 </resources>
