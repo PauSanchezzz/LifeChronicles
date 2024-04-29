@@ -14,11 +14,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LifeChroniclesTheme {
-                LogInScreen()
+                AppNavigation()
             }
-            //AppNavigation()
-         // WelcomeScreen()
-
         }
     }
 }

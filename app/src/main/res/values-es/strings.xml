@@ -11,5 +11,11 @@
     <string name="password">Contraseña:</string>
     <string name="titleSignUp">¡Registrate!</string>
     <string name="lblAccountLogin">¿Ya tienes una cuenta?\n¡Ingresa ahora!</string>
+    <string name="welcomeUser">Bienvenido Usuario</string>
+    <string name="homeTitle">¿Qué quieres hacer hoy?</string>
+    <string name="categories">Categorías</string>
+    <string name="recommendations">Recomendaciones</string>
+    <string name="events">Eventos</string>
+    <string name="prices">Precios: %1$s - %2$s</string>
     <string name="tileConversations">Conversaciones</string>
 </resources>
