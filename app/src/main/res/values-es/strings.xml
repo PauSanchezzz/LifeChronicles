@@ -17,6 +17,5 @@
     <string name="recommendations">Recomendaciones</string>
     <string name="events">Eventos</string>
     <string name="prices">Precios: %1$s - %2$s</string>
-
-
+    <string name="tileConversations">Conversaciones</string>
 </resources>
