@@ -11,4 +11,5 @@
     <string name="password">Contraseña:</string>
     <string name="titleSignUp">¡Registrate!</string>
     <string name="lblAccountLogin">¿Ya tienes una cuenta?\n¡Ingresa ahora!</string>
+    <string name="tileConversations">Conversaciones</string>
 </resources>

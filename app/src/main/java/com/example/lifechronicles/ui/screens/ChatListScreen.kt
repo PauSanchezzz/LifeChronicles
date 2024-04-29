@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -48,7 +49,7 @@ fun ChatListScreen() {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Conversaciones",
+                        text = stringResource(id = R.string.tileConversations),
                     )
                 }
             )
@@ -79,7 +80,7 @@ fun Card() {
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier
             .padding(horizontal = 25.dp, vertical = 8.dp)
-                        .border(0.5.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(16.dp)),
+            .border(0.5.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(16.dp)),
     ) {
         Row(
             modifier = Modifier
