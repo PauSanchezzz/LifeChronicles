@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.lifechronicles.ui.screens.EventDetailScreen
 import com.example.lifechronicles.ui.screens.EventsListScreen
 import com.example.lifechronicles.ui.screens.HomeScreen
 import com.example.lifechronicles.ui.screens.LogInScreen
@@ -11,7 +12,7 @@ import com.example.lifechronicles.ui.screens.LogInScreen
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreens.HomeScreen.route) {
+    NavHost(navController = navController, startDestination = AppScreens.EventDetailScreen.route) {
         composable(route = AppScreens.LogInScreen.route) {
             LogInScreen()
         }
@@ -20,6 +21,9 @@ fun AppNavigation() {
         }
         composable(route = AppScreens.EventsListScreen.route) {
             EventsListScreen(navController)
+        }
+        composable(route = AppScreens.EventDetailScreen.route) {
+            EventDetailScreen(navController)
         }
     }
 }

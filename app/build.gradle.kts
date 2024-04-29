@@ -65,6 +65,10 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.0.0-rc01")
     // Material Icons
     implementation("androidx.compose.material:material-icons-extended:1.6.4")
+    // Constraint Layout
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

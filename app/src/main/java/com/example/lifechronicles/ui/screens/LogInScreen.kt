@@ -1,5 +1,6 @@
 package com.example.lifechronicles.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.CustomTextField
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun LogInScreen() {
     BoxWithConstraints(
@@ -50,7 +52,6 @@ fun LogInScreen() {
             contentScale = ContentScale.FillHeight,
             modifier = Modifier
                 .fillMaxWidth()
-
                 .drawWithCache {
                     val gradient = Brush.verticalGradient(
                         colors = listOf(Color.Black.copy(alpha = 0.5f), Color.Transparent),
@@ -62,20 +63,17 @@ fun LogInScreen() {
                         drawRect(gradient, blendMode = BlendMode.Multiply)
                     }
                 })
-
         Column(
             modifier = Modifier
                 .clip(RoundedCornerShape(15, 15, 0, 0))
                 .background(MaterialTheme.colorScheme.onSurface)
-
                 .fillMaxWidth()
                 .fillMaxHeight(0.6F),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                modifier = Modifier
-                    .padding(bottom = 80.dp),
+                modifier = Modifier.padding(bottom = 80.dp),
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -90,20 +88,23 @@ fun LogInScreen() {
                 Spacer(modifier = Modifier.width(15.dp))
 
                 OutlinedButton(
-                    border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
+                    border = BorderStroke(
+                        width = 1.dp, color = MaterialTheme.colorScheme.secondary
+                    ),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
-                    Text(text = stringResource(id = R.string.signup), color = MaterialTheme.colorScheme.onPrimary)
+                    Text(
+                        text = stringResource(id = R.string.signup),
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
                 }
             }
         }
     }
 
-    Column (
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
+    Column(
+        modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom
 
     ) {
         Card(
@@ -129,14 +130,23 @@ fun LogInScreen() {
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.surface
                 )
-                CustomTextField(label = stringResource(id = R.string.email), onValueChange = { null }, value = "")
+                CustomTextField(
+                    label = stringResource(id = R.string.email),
+                    onValueChange = { null },
+                    value = ""
+                )
                 Spacer(modifier = Modifier.height(15.dp))
-                CustomTextField(label = stringResource(id = R.string.password), onValueChange = { null }, value = "")
+                CustomTextField(
+                    label = stringResource(id = R.string.password),
+                    onValueChange = { null },
+                    value = ""
+                )
 
                 OutlinedButton(
-                    modifier = Modifier
-                        .padding(20.dp),
-                    border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
+                    modifier = Modifier.padding(20.dp),
+                    border = BorderStroke(
+                        width = 1.dp, color = MaterialTheme.colorScheme.secondary
+                    ),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                 ) {
@@ -144,8 +154,7 @@ fun LogInScreen() {
                         text = stringResource(id = R.string.login),
                         fontSize = 22.sp,
                         color = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .padding(horizontal = 38.dp)
+                        modifier = Modifier.padding(horizontal = 38.dp)
 
                     )
                 }
