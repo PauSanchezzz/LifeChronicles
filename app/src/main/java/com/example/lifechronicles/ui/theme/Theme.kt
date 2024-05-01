@@ -14,11 +14,13 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = Color(0XFFB1DA98),
     primary = Color(0xFF0B6439),
     secondary = Color(0XFF094F29),
-    tertiary = Color(0XFF094F29),
     background = Color(0xFFD0E7CF),
     onBackground = Color(0xFF2C9260),
     surface = Color(0xFF094F29),
     onSurface = Color(0xFFFE7F2E2),
+    tertiary = Color(0xFF6BCA96),
+    onTertiary = Color(0xFF000000),
+
    // onPrimary = Color(0xFF184E27)
     /* Other default colors to override
     onPrimary = Color.White,
