@@ -10,6 +10,7 @@ import com.example.lifechronicles.ui.screens.EventDetailScreen
 import com.example.lifechronicles.ui.screens.EventsListScreen
 import com.example.lifechronicles.ui.screens.HomeScreen
 import com.example.lifechronicles.ui.screens.LogInScreen
+import com.example.lifechronicles.ui.screens.ProfileScreen
 import com.example.lifechronicles.ui.screens.WelcomeScreen
 
 @Composable
@@ -36,6 +37,9 @@ fun AppNavigation() {
         }
         composable(route = AppScreens.WelcomeScreen.route) {
             WelcomeScreen()
+        }
+        composable(route = AppScreens.ProfileScreen.route){
+            ProfileScreen()
         }
     }
 }

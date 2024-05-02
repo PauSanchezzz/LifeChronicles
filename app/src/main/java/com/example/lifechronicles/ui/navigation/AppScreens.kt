@@ -9,4 +9,5 @@ sealed class AppScreens(val route: String) {
     data object ChatListScreen : AppScreens("chat_list_screen")
     data object ChatScreen : AppScreens("chat_screen")
     data object WelcomeScreen : AppScreens("welcome_screen")
+    data object ProfileScreen : AppScreens("profile_screen")
 }
