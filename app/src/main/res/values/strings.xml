@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">LifeChronicles</string>
+    <string name="app_name" translatable="false">LifeChronicles</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="lblHasAccount">Don\'t have an account yet?\nCreate one now!</string>
+    <string name="welcome">¡Welcome!</string>
+    <string name="name">Name:</string>
+    <string name="lastName">Last Name:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password:</string>
+    <string name="titleSignUp">¡Sign Up!</string>
+    <string name="lblAccountLogin">Already have an account?\nLog in now</string>
+    <string name="welcomeUser">Welcome User</string>
+    <string name="homeTitle">what do you want to do today?</string>
+    <string name="categories">Categories</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="events">Events</string>
+    <string name="prices">Prices: %1$s - %2$s</string>
+    <string name="tileConversations">Conversations</string>
+    <string name="signout">Sign Out</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LifeChronicles</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="signup">Registrate</string>
+    <string name="lblHasAccount">¿No tienes cuenta aún?\n¡Crea una ahora!</string>
+    <string name="welcome">¡Bienvenido!</string>
+    <string name="name">Nombre:</string>
+    <string name="lastName">Apellido:</string>
+    <string name="email">Correo:</string>
+    <string name="password">Contraseña:</string>
+    <string name="titleSignUp">¡Registrate!</string>
+    <string name="lblAccountLogin">¿Ya tienes una cuenta?\n¡Ingresa ahora!</string>
+    <string name="welcomeUser">Bienvenido Usuario</string>
+    <string name="homeTitle">¿Qué quieres hacer hoy?</string>
+    <string name="categories">Categorías</string>
+    <string name="recommendations">Recomendaciones</string>
+    <string name="events">Eventos</string>
+    <string name="prices">Precios: %1$s - %2$s</string>
+    <string name="tileConversations">Conversaciones</string>
+    <string name="signout">Cerrar Sesión</string>
+    <string name="profile">Perfil</string>
+</resources>

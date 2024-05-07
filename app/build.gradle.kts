@@ -59,6 +59,17 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    // Coil for Image Loading
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
+    // Material Icons
+    implementation("androidx.compose.material:material-icons-extended:1.6.4")
+    // Constraint Layout
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    // Bottom NavBar
+    implementation ("androidx.compose.material:material:1.0.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
