@@ -15,7 +15,7 @@ import com.example.lifechronicles.ui.screens.WelcomeScreen
 
 @Composable
 fun AppNavigation() {
-    val navController = rememberNavController()
+    /*val navController = rememberNavController()
     NavHost(navController = navController, startDestination = AppScreens.EventDetailScreen.route) {
         composable(route = AppScreens.LogInScreen.route) {
             LogInScreen()
@@ -41,5 +41,5 @@ fun AppNavigation() {
         composable(route = AppScreens.ProfileScreen.route){
             ProfileScreen()
         }
-    }
+    }*/
 }

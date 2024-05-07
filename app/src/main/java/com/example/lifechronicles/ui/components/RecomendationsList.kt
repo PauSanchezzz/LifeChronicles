@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun RecommendationList(modifier: Modifier) {
+fun RecommendationList(modifier: Modifier, onClick : () -> Unit){
     LazyRow(modifier) {
         items(
             count = 10
@@ -17,7 +17,8 @@ fun RecommendationList(modifier: Modifier) {
                 imageUrl = "https://i.redd.it/1f8jhybnge6c1.jpeg",
                 placeName = "Place Name",
                 location = "Location",
-                rating = 4.5
+                rating = 4.5,
+                onClick = onClick,
             )
         }
     }

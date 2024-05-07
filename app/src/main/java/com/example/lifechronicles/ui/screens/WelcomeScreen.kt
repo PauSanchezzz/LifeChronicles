@@ -30,7 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onLoginClick: () -> Unit,
+    onSignUpClick: () -> Unit,
+) {
     ImageBackground()
 
     Column(
@@ -54,11 +57,15 @@ fun WelcomeScreen() {
             verticalArrangement = Arrangement.Bottom
         ) {
             FilledTonalButton(
-                onClick = { /*TODO*/ },
+                onClick = onLoginClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFF2C9260))
             )
             {
-                Text(text = stringResource(id = R.string.login), fontSize = 22.sp, color = Color(0XFFFB1DA98))
+                Text(
+                    text = stringResource(id = R.string.login),
+                    fontSize = 22.sp,
+                    color = Color(0XFFFB1DA98)
+                )
             }
         }
         Row(
@@ -78,7 +85,7 @@ fun WelcomeScreen() {
             )
             Spacer(modifier = Modifier.width(15.dp))
             FilledTonalButton(
-                onClick = { /*TODO*/ },
+                onClick = onSignUpClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFF2C9260))
             ) {
                 Text(text = stringResource(id = R.string.signup), color = Color(0XFFFB1DA98))

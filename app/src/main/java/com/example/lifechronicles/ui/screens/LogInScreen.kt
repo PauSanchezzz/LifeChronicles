@@ -43,7 +43,10 @@ import com.example.lifechronicles.ui.components.CustomTextField
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun LogInScreen() {
+fun LogInScreen(
+    onClick: () -> Unit,
+    onSignUpClick: () -> Unit,
+) {
     BoxWithConstraints(
         contentAlignment = Alignment.BottomEnd
     ) {
@@ -91,7 +94,7 @@ fun LogInScreen() {
                     border = BorderStroke(
                         width = 1.dp, color = MaterialTheme.colorScheme.secondary
                     ),
-                    onClick = { /*TODO*/ },
+                    onClick = onSignUpClick,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
                     Text(
@@ -104,8 +107,8 @@ fun LogInScreen() {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom
-
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom,
     ) {
         Card(
             modifier = Modifier
@@ -117,7 +120,8 @@ fun LogInScreen() {
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
             ) {
                 Text(
                     modifier = Modifier
@@ -141,13 +145,12 @@ fun LogInScreen() {
                     onValueChange = { null },
                     value = ""
                 )
-
                 OutlinedButton(
                     modifier = Modifier.padding(20.dp),
                     border = BorderStroke(
                         width = 1.dp, color = MaterialTheme.colorScheme.secondary
                     ),
-                    onClick = { /*TODO*/ },
+                    onClick = onClick,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                 ) {
                     Text(

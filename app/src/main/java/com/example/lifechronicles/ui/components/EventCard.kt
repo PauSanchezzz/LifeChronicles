@@ -1,6 +1,7 @@
 package com.example.lifechronicles.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,12 +27,13 @@ import com.example.lifechronicles.R
 
 @Composable
 fun EventCard(
-    imageUrl: String, name: String, location: String, rating: Double, prices: List<String>
+    imageUrl: String, name: String, location: String, rating: Double, prices: List<String>, onClick : () -> Unit,
 ) {
     Card(
         Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp)),
+            .clip(RoundedCornerShape(8.dp))
+            .clickable(onClick = onClick),
     ) {
         Row(
             modifier = Modifier.padding(5.dp),

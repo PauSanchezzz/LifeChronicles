@@ -1,5 +1,6 @@
 package com.example.lifechronicles.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -21,14 +22,14 @@ import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.navigation.AppScreens
 
 @Composable
-fun CategoriesGrid(modifier: Modifier, navController: NavController) {
+fun CategoriesGrid(modifier: Modifier, navController: NavController, onClick: () -> Unit){
     Card(
         modifier
             .clip(
                 RoundedCornerShape(10.dp)
             )
             .padding(10.dp),
-        elevation = CardDefaults.cardElevation(5.dp)
+        elevation = CardDefaults.cardElevation(5.dp),
     ) {
         Column(
             modifier = Modifier.padding(10.dp),
@@ -46,9 +47,7 @@ fun CategoriesGrid(modifier: Modifier, navController: NavController) {
                     CategoryCard(
                         "Category",
                         "https://i.redd.it/1f8jhybnge6c1.jpeg",
-                        onClick = {
-                            navController.navigate(AppScreens.EventsListScreen.route)
-                        }
+                        onClick = onClick
                     )
                 }
             }

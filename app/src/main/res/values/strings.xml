@@ -17,4 +17,6 @@
     <string name="events">Events</string>
     <string name="prices">Prices: %1$s - %2$s</string>
     <string name="tileConversations">Conversations</string>
+    <string name="signout">Sign Out</string>
+    <string name="profile">Profile</string>
 </resources>
