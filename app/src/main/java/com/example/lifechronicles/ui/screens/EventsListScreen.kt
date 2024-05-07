@@ -26,7 +26,7 @@ import com.example.lifechronicles.ui.components.EventCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EventsListScreen(navController: NavController) {
+fun EventsListScreen(navController: NavController, onEventClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(title = {
@@ -60,7 +60,8 @@ fun EventsListScreen(navController: NavController) {
                         name = "Event",
                         location = "Location",
                         rating = 5.0,
-                        prices = listOf("$10", "$20")
+                        prices = listOf("$10", "$20"),
+                        onClick = onEventClick
                     )
                 }
             }

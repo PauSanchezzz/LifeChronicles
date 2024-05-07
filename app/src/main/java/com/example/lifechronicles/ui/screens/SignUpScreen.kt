@@ -1,5 +1,6 @@
 package com.example.lifechronicles.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,8 +40,12 @@ import androidx.compose.ui.unit.sp
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.CustomTextField
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    onClick: () -> Unit,
+    onLoginClick: () -> Unit,
+) {
     BoxWithConstraints(
         contentAlignment = Alignment.BottomEnd
     ) {
@@ -49,7 +54,6 @@ fun SignUpScreen() {
             contentScale = ContentScale.FillHeight,
             modifier = Modifier
                 .fillMaxWidth()
-
                 .drawWithCache {
                     val gradient = Brush.verticalGradient(
                         colors = listOf(Color.Black.copy(alpha = 0.5f), Color.Transparent),
@@ -61,12 +65,10 @@ fun SignUpScreen() {
                         drawRect(gradient, blendMode = BlendMode.Multiply)
                     }
                 })
-
         Column(
             modifier = Modifier
                 .clip(RoundedCornerShape(15, 15, 0, 0))
                 .background(MaterialTheme.colorScheme.onSurface)
-
                 .fillMaxWidth()
                 .fillMaxHeight(0.6F),
             verticalArrangement = Arrangement.Bottom,
@@ -87,10 +89,9 @@ fun SignUpScreen() {
                     color = MaterialTheme.colorScheme.surface
                 )
                 Spacer(modifier = Modifier.width(15.dp))
-
                 OutlinedButton(
                     border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
-                    onClick = { /*TODO*/ },
+                    onClick = onLoginClick,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
                     Text(text = stringResource(id = R.string.login), color = MaterialTheme.colorScheme.onPrimary)
@@ -98,7 +99,6 @@ fun SignUpScreen() {
             }
         }
     }
-
     Column (
         modifier = Modifier
             .fillMaxSize(),
@@ -115,7 +115,8 @@ fun SignUpScreen() {
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
             ) {
                 Text(
                     modifier = Modifier
@@ -137,7 +138,7 @@ fun SignUpScreen() {
                     modifier = Modifier
                         .padding(12.dp),
                     border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary),
-                    onClick = { /*TODO*/ },
+                    onClick = onClick,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                 ) {
                     Text(

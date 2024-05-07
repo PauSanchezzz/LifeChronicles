@@ -37,12 +37,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun ChatListScreen() {
+fun ChatListScreen(navController: NavHostController = rememberNavController(), onChatClick : () -> Unit){
     val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
@@ -63,7 +65,7 @@ fun ChatListScreen() {
                 verticalArrangement = Arrangement.Center
             ) {
                 for (i in 1..6) {
-                    Card()
+                    Card( navController, onChatClick)
                 }
             }
         }
@@ -71,10 +73,9 @@ fun ChatListScreen() {
 }
 
 @Composable
-fun Card() {
-
+fun Card(navController: NavHostController, onClick: () -> Unit){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(Color(0XFFF1F7ED)),
         elevation = ButtonDefaults.buttonElevation(10.dp),
         shape = RoundedCornerShape(16.dp),
@@ -89,7 +90,6 @@ fun Card() {
             CardImage()
             CardText()
         }
-
     }
 }
 

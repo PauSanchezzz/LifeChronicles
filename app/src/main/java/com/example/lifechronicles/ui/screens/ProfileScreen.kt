@@ -22,21 +22,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person2
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -44,29 +39,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberAsyncImagePainter
 import com.example.lifechronicles.R
-import com.example.lifechronicles.ui.components.CustomTextField
-import java.time.format.TextStyle
-
+import androidx.compose.material3.Card
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(onSignOut : () -> Unit) {
     val scrollState = rememberScrollState()
     Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(
-                    text = "Perfil",
+                    text = stringResource(id = R.string.profile),
                 )
             })
     }, content = {
@@ -78,7 +68,6 @@ fun ProfileScreen() {
         ) {
             val (backgroundBox, contentBox, headerBox) = createRefs()
             Box(modifier = Modifier
-                .fillMaxHeight()
                 .fillMaxWidth()
                 .background(color = MaterialTheme.colorScheme.surface)
                 .constrainAs(backgroundBox) {
@@ -99,7 +88,6 @@ fun ProfileScreen() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-
             }
             Box(modifier = Modifier
                 .clip(
@@ -108,7 +96,6 @@ fun ProfileScreen() {
                     )
                 )
                 .fillMaxWidth()
-                .fillMaxHeight(0.6F)
                 .background(color = MaterialTheme.colorScheme.background)
                 .padding(vertical = 20.dp)
                 .verticalScroll(scrollState)
@@ -117,19 +104,15 @@ fun ProfileScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
-                }) {
-
-            }
+                })
         }
     })
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
-
+        verticalArrangement = Arrangement.Bottom,
     ) {
-        androidx.compose.material3.Card(
+        Card(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 28.dp, vertical = 165.dp),
@@ -141,13 +124,14 @@ fun ProfileScreen() {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 78.dp, bottom = 10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
             ) {
                 OutlinedTextField(
                     modifier = Modifier
                         .padding(top = 5.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "Nombre",
+                    value = "",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,
@@ -159,7 +143,7 @@ fun ProfileScreen() {
                     onValueChange = { "" },
                     label = {
                         Text(
-                            text = "Nombre:",
+                            text = stringResource(id = R.string.name),
                             color = MaterialTheme.colorScheme.surface,
                             fontWeight = FontWeight.Bold
                         )
@@ -169,7 +153,7 @@ fun ProfileScreen() {
                     modifier = Modifier
                         .padding(top = 7.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "Apellido",
+                    value = "",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,
@@ -181,19 +165,17 @@ fun ProfileScreen() {
                     onValueChange = { "" },
                     label = {
                         Text(
-                            text = "Apellido:",
+                            text = stringResource(id = R.string.lastName),
                             color = MaterialTheme.colorScheme.surface,
                             fontWeight = FontWeight.Bold
                         )
                     },
                 )
-
                 OutlinedTextField(
                     modifier = Modifier
                         .padding(top = 7.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "Correo",
-
+                    value = "",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Email,
@@ -205,18 +187,17 @@ fun ProfileScreen() {
                     onValueChange = { "" },
                     label = {
                         Text(
-                            text = "Correo:",
+                            text = stringResource(id = R.string.email),
                             color = MaterialTheme.colorScheme.surface,
                             fontWeight = FontWeight.Bold
                         )
                     },
                 )
-
                 OutlinedTextField(
                     modifier = Modifier
                         .padding(top = 7.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "Contraseña",
+                    value = "",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Password,
@@ -228,7 +209,7 @@ fun ProfileScreen() {
                     onValueChange = { "" },
                     label = {
                         Text(
-                            text = "Contraseña:",
+                            text = stringResource(id = R.string.password),
                             color = MaterialTheme.colorScheme.surface,
                             fontWeight = FontWeight.Bold
                         )
@@ -241,13 +222,13 @@ fun ProfileScreen() {
                         width = 1.dp,
                         color = MaterialTheme.colorScheme.secondary
                     ),
-                    onClick = { /*TODO*/ },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                    onClick = onSignOut,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                 ) {
                     Text(
-                        text = stringResource(id = R.string.signup),
+                        text = stringResource(id = R.string.signout),
                         fontSize = 22.sp,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = MaterialTheme.colorScheme.onError,
                         modifier = Modifier
                             .padding(horizontal = 38.dp)
 

@@ -50,7 +50,7 @@ import com.example.lifechronicles.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatScreen() {
+fun ChatScreen(){
     val scrollState = rememberScrollState()
     Scaffold(topBar = {
         TopAppBar(title = {

@@ -18,4 +18,6 @@
     <string name="events">Eventos</string>
     <string name="prices">Precios: %1$s - %2$s</string>
     <string name="tileConversations">Conversaciones</string>
+    <string name="signout">Cerrar Sesión</string>
+    <string name="profile">Perfil</string>
 </resources>

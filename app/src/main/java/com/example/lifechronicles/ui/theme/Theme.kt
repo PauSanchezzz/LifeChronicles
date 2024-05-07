@@ -20,7 +20,8 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFFFE7F2E2),
     tertiary = Color(0xFF6BCA96),
     onTertiary = Color(0xFF000000),
-
+    error = Color(0xFFCE0D0D),
+    onError = Color(0xFFFFFFFF),
    // onPrimary = Color(0xFF184E27)
     /* Other default colors to override
     onPrimary = Color.White,

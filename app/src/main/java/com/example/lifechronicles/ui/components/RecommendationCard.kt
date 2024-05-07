@@ -30,7 +30,8 @@ fun RecommendationCard(
     imageUrl: String,
     placeName: String,
     location: String,
-    rating: Double
+    rating: Double,
+    onClick: () -> Unit,
 ) {
     Card(modifier = Modifier.padding(10.dp),
         shape = MaterialTheme.shapes.medium,
@@ -38,7 +39,7 @@ fun RecommendationCard(
             containerColor = MaterialTheme.colorScheme.onPrimary,
             contentColor = MaterialTheme.colorScheme.primary
         ),
-        onClick = { /*TODO*/ }) {
+        onClick = onClick) {
         Column(
             modifier = Modifier.padding(5.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
