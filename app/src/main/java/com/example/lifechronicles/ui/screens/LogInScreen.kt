@@ -23,6 +23,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,13 +42,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.CustomTextField
+import com.example.lifechronicles.ui.viewModel.LogInViewModel
 
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun LogInScreen(
     onClick: () -> Unit,
     onSignUpClick: () -> Unit,
+    logInViewModel: LogInViewModel = LogInViewModel()
 ) {
+    val logInState by logInViewModel.uiState.collectAsState()
     BoxWithConstraints(
         contentAlignment = Alignment.BottomEnd
     ) {
@@ -95,7 +100,9 @@ fun LogInScreen(
                         width = 1.dp, color = MaterialTheme.colorScheme.secondary
                     ),
                     onClick = onSignUpClick,
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.signup),
@@ -136,22 +143,24 @@ fun LogInScreen(
                 )
                 CustomTextField(
                     label = stringResource(id = R.string.email),
-                    onValueChange = { null },
-                    value = ""
+                    onValueChange = { logInViewModel.onEmailChange(it) },
+                    value = logInState.email
                 )
                 Spacer(modifier = Modifier.height(15.dp))
                 CustomTextField(
                     label = stringResource(id = R.string.password),
-                    onValueChange = { null },
-                    value = ""
+                    onValueChange = { logInViewModel.onPasswordChange(it) },
+                    value = logInState.password
                 )
                 OutlinedButton(
                     modifier = Modifier.padding(20.dp),
                     border = BorderStroke(
                         width = 1.dp, color = MaterialTheme.colorScheme.secondary
                     ),
-                    onClick = onClick,
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                    onClick = { logInViewModel.onLogIn(onClick) },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary,
+                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.login),
