@@ -7,6 +7,17 @@ import com.google.firebase.auth.FirebaseAuth
 class AuthRepository {
     private val _auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val _userRepository = UserRepository()
+
+    fun LogIn(email:String, password:String, onSuccess: () -> Unit){
+        _auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    onSuccess()
+                } else {
+                    Log.d("AuthRepository", "Error: ${task.exception?.message}")
+                }
+            }
+    }
     fun signUp(
         user: User,
         onSuccess: () -> Unit,
