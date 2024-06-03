@@ -4,6 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.lifechronicles.ui.components.RecommendationList
+import com.example.lifechronicles.ui.screens.HomeScreen
 import com.example.lifechronicles.ui.screens.LogInScreen
 import com.example.lifechronicles.ui.screens.SignUpScreen
 import com.example.lifechronicles.ui.screens.WelcomeScreen
@@ -14,7 +16,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         route = Graph.AUTHENTICATION,
         startDestination = AuthScreen.Welcome.route
     ) {
-        composable (route= AuthScreen.Welcome.route){
+        composable(route = AuthScreen.Welcome.route) {
             WelcomeScreen(
                 onLoginClick = {
                     navController.navigate(AuthScreen.Login.route)
