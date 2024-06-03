@@ -51,7 +51,6 @@ fun SignUpScreen(
     signUpViewModel: SignUpViewModel = SignUpViewModel()
 ) {
     val signUpState by signUpViewModel.uiState.collectAsState()
-
     BoxWithConstraints(
         contentAlignment = Alignment.BottomEnd
     ) {
@@ -81,8 +80,7 @@ fun SignUpScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                modifier = Modifier
-                    .padding(bottom = 80.dp),
+                modifier = Modifier.padding(bottom = 80.dp),
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -97,8 +95,7 @@ fun SignUpScreen(
                 Spacer(modifier = Modifier.width(15.dp))
                 OutlinedButton(
                     border = BorderStroke(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.secondary
+                        width = 1.dp, color = MaterialTheme.colorScheme.secondary
                     ),
                     onClick = onLoginClick,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
@@ -112,9 +109,7 @@ fun SignUpScreen(
         }
     }
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
+        modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom
 
     ) {
         Card(
@@ -159,29 +154,23 @@ fun SignUpScreen(
                 CustomTextField(
                     label = stringResource(id = R.string.password),
                     onValueChange = { signUpViewModel.onPasswordChange(it) },
+                    isHidden = true,
                     value = signUpState.password
                 )
                 OutlinedButton(
-                    modifier = Modifier
-                        .padding(12.dp),
-                    border = BorderStroke(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.secondary
-                    ),
-                    onClick = {
+                    modifier = Modifier.padding(12.dp), border = BorderStroke(
+                        width = 1.dp, color = MaterialTheme.colorScheme.secondary
+                    ), onClick = {
                         signUpViewModel.onSignUp(onClick)
-                    },
-                    colors = ButtonDefaults.buttonColors(
+                    }, colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondary,
-                    ),
-                    enabled = !signUpState.loading
+                    ), enabled = !signUpState.loading
                 ) {
                     Text(
                         text = stringResource(id = R.string.signup),
                         fontSize = 22.sp,
                         color = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .padding(horizontal = 38.dp)
+                        modifier = Modifier.padding(horizontal = 38.dp)
                     )
                 }
 

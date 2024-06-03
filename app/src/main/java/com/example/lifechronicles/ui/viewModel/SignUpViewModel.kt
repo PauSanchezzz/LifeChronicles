@@ -3,7 +3,7 @@ package com.example.lifechronicles.ui.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lifechronicles.domain.entity.User
-import com.example.lifechronicles.infrastructure.repository.AuthRepository
+import com.example.lifechronicles.infrastructure.external.repository.AuthRepository
 import com.example.lifechronicles.ui.state.SignUpUIState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

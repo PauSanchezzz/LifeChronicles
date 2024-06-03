@@ -67,9 +67,9 @@ dependencies {
     // Material Icons
     implementation("androidx.compose.material:material-icons-extended:1.6.4")
     // Constraint Layout
-    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     // Bottom NavBar
-    implementation ("androidx.compose.material:material:1.0.1")
+    implementation("androidx.compose.material:material:1.0.1")
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     // Firebase Auth
