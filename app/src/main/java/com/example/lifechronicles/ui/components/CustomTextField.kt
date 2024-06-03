@@ -9,6 +9,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -27,6 +29,7 @@ fun CustomTextField(label: String, onValueChange: (String) -> Unit, value: Strin
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 40.dp, end = 40.dp, bottom = 5.dp)
+            .padding(start = 40.dp, end = 40.dp, bottom = 5.dp),
+        textStyle = TextStyle(color = MaterialTheme.colorScheme.surface)
     )
 }
