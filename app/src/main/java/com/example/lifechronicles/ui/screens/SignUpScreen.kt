@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -144,8 +145,8 @@ fun SignUpScreen(
                 CustomTextField(
                     label = stringResource(id = R.string.lastName),
                     onValueChange = { signUpViewModel.onLastNameChange(it) },
-                    value = signUpState.lastName
-                )
+                    value = signUpState.lastName,
+                    )
                 CustomTextField(
                     label = stringResource(id = R.string.email),
                     onValueChange = { signUpViewModel.onEmailChange(it) },
@@ -158,9 +159,13 @@ fun SignUpScreen(
                     value = signUpState.password
                 )
                 OutlinedButton(
-                    modifier = Modifier.padding(12.dp), border = BorderStroke(
-                        width = 1.dp, color = MaterialTheme.colorScheme.secondary
-                    ), onClick = {
+                    modifier = Modifier
+                        .padding(10.dp),
+                    border = BorderStroke(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.secondary
+                    ),
+                    onClick = {
                         signUpViewModel.onSignUp(onClick)
                     }, colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondary,
@@ -168,7 +173,7 @@ fun SignUpScreen(
                 ) {
                     Text(
                         text = stringResource(id = R.string.signup),
-                        fontSize = 22.sp,
+                        fontSize = 20.sp,
                         color = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier.padding(horizontal = 38.dp)
                     )
