@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,7 +37,8 @@ fun CategoryCard(categoryName: String, imageUrl: String, onClick: () -> Unit) {
             contentColor = MaterialTheme.colorScheme.primary,
         ),
         modifier = Modifier
-            .padding(6.dp)
+            .width(110.dp)
+            .padding(3.dp)
             .border(
                 0.5.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(16.dp)
             ),
@@ -51,9 +53,17 @@ fun CategoryCard(categoryName: String, imageUrl: String, onClick: () -> Unit) {
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .height(60.dp)
+                    .height(90.dp)
+
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(15.dp))
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = 15.dp,
+                            topEnd = 15.dp,
+                            bottomEnd = 15.dp,
+                            bottomStart = 15.dp
+                        )
+                    )
             )
             Text(
                 modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),

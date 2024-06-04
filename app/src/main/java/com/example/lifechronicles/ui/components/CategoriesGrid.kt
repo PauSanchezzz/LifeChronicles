@@ -1,10 +1,12 @@
 package com.example.lifechronicles.ui.components
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -22,17 +24,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.lifechronicles.R
+import com.example.lifechronicles.domain.entity.Category
+import com.example.lifechronicles.domain.entity.Event
 import com.example.lifechronicles.ui.navigation.AppScreens
 
 @Composable
-fun CategoriesGrid(modifier: Modifier, navController: NavController, onClick: () -> Unit) {
+fun CategoriesGrid(
+    modifier: Modifier,
+    navController: NavController,
+    categoryList: List<Category>,
+    onClick: () -> Unit
+) {
     Card(
         modifier
             .clip(
                 RoundedCornerShape(10.dp)
             )
-            .padding(vertical = 15.dp),
-        elevation = CardDefaults.cardElevation(5.dp),
+            .border(
+                0.5.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp)
+            ),
+        elevation = CardDefaults.cardElevation(20.dp),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -42,13 +53,17 @@ fun CategoriesGrid(modifier: Modifier, navController: NavController, onClick: ()
                 fontSize = MaterialTheme.typography.headlineMedium.fontSize,
                 color = MaterialTheme.colorScheme.secondary,
                 fontWeight = FontWeight.Bold,
-            )
+
+                )
             AppDivider()
-            LazyHorizontalGrid(rows = GridCells.Fixed(2)) {
-                items(count = 6) {
+            LazyHorizontalGrid(
+                rows = GridCells.Fixed(2),
+                modifier = Modifier.padding(vertical = 6.dp)
+            ) {
+                items(categoryList) { event ->
                     CategoryCard(
-                        "Category",
-                        "https://www.diariodelsur.com.co/wp-content/uploads/2023/11/museo-de-la-ind.jpg",
+                        event.name,
+                        event.img_url,
                         onClick = onClick,
                     )
                 }

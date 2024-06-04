@@ -20,24 +20,7 @@ class EventRepository {
             }
             eventsList
         } catch (e: Exception) {
-            Log.d("UserRepository", "get failed with ", e)
             null
         }
     }
-
-/*    fun getEvents(callback: (List<EventsUIState>) -> Unit) {
-        val eventsList = mutableListOf<EventsUIState>()
-        firestore.get()
-            .addOnSuccessListener { categories ->
-                for (category in categories) {
-                    category.reference.collection("events").get()
-                        .addOnSuccessListener { events ->
-                            for (event in events) {
-                                eventsList.add(event.toObject(EventsUIState::class.java))
-                            }
-                            callback(eventsList)
-                        }
-                }
-            }
-    }*/
 }
