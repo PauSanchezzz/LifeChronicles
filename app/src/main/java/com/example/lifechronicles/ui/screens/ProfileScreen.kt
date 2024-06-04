@@ -20,7 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person2
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ButtonDefaults
@@ -47,18 +46,30 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberAsyncImagePainter
 import com.example.lifechronicles.R
 import androidx.compose.material3.Card
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.navigation.NavHostController
+import com.example.lifechronicles.ui.viewModel.ProfileViewModel
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen(onSignOut : () -> Unit) {
+fun ProfileScreen(
+    navController: NavHostController,
+    onSignOut: () -> Unit,
+    profileViewModel: ProfileViewModel = ProfileViewModel()
+) {
     val scrollState = rememberScrollState()
+    val profileState by profileViewModel.uiState.collectAsState()
+
     Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(
                     text = stringResource(id = R.string.profile),
                 )
-            })
+            }
+        )
     }, content = {
         ConstraintLayout(
             modifier = Modifier
@@ -131,7 +142,7 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                     modifier = Modifier
                         .padding(top = 5.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "",
+                    value =  if(profileState.success) profileState.name else "loading",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,
@@ -139,7 +150,13 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                             tint = MaterialTheme.colorScheme.surface
                         )
                     },
-                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = MaterialTheme.colorScheme.onBackground),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedTextColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.surface,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                        focusedTextColor = MaterialTheme.colorScheme.surface,
+                    ),
                     onValueChange = { "" },
                     label = {
                         Text(
@@ -153,7 +170,7 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                     modifier = Modifier
                         .padding(top = 7.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "",
+                    value = profileState.lastName,
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,
@@ -161,7 +178,13 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                             tint = MaterialTheme.colorScheme.surface
                         )
                     },
-                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = MaterialTheme.colorScheme.onBackground),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedTextColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.surface,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                        focusedTextColor = MaterialTheme.colorScheme.surface,
+                        ),
                     onValueChange = { "" },
                     label = {
                         Text(
@@ -175,7 +198,7 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                     modifier = Modifier
                         .padding(top = 7.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = "",
+                    value = profileState.email,
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Email,
@@ -183,33 +206,17 @@ fun ProfileScreen(onSignOut : () -> Unit) {
                             tint = MaterialTheme.colorScheme.surface
                         )
                     },
-                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = MaterialTheme.colorScheme.onBackground),
-                    onValueChange = { "" },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedTextColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.surface,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                        focusedTextColor = MaterialTheme.colorScheme.surface,
+                    ),
+                    onValueChange = { },
                     label = {
                         Text(
                             text = stringResource(id = R.string.email),
-                            color = MaterialTheme.colorScheme.surface,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                )
-                OutlinedTextField(
-                    modifier = Modifier
-                        .padding(top = 7.dp),
-                    shape = RoundedCornerShape(30.dp),
-                    value = "",
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Password,
-                            contentDescription = "",
-                            tint = MaterialTheme.colorScheme.surface
-                        )
-                    },
-                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = MaterialTheme.colorScheme.onBackground),
-                    onValueChange = { "" },
-                    label = {
-                        Text(
-                            text = stringResource(id = R.string.password),
                             color = MaterialTheme.colorScheme.surface,
                             fontWeight = FontWeight.Bold
                         )

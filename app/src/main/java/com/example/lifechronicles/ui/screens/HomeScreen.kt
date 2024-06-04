@@ -3,25 +3,29 @@ package com.example.lifechronicles.ui.screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -33,18 +37,28 @@ import com.example.lifechronicles.ui.components.AppDivider
 import com.example.lifechronicles.ui.components.CategoriesGrid
 import com.example.lifechronicles.ui.components.RecommendationList
 import com.example.lifechronicles.ui.navigation.graphs.BottomBarScreen
-import com.example.lifechronicles.ui.navigation.graphs.HomeNavGraph
+import com.example.lifechronicles.ui.state.CategoryUIState
+import com.example.lifechronicles.ui.state.EventsRecommendedUIState
+import com.example.lifechronicles.ui.viewModel.CategoryViewModel
+import com.example.lifechronicles.ui.viewModel.RecoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavHostController = rememberNavController(), onCategoryClick: () -> Unit, onDetailClick: ()-> Unit) {
+fun HomeScreen(
+    navController: NavHostController = rememberNavController(),
+    recoViewModel: RecoViewModel = RecoViewModel(),
+    categoryViewModel: CategoryViewModel = CategoryViewModel()
+) {
+    val eventsState by recoViewModel.uiState.collectAsState()
+    val categoriesState by categoryViewModel.uiState.collectAsState()
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.welcomeUser),
+                        text = stringResource(id = R.string.welcome),
                     )
                 }
             )
@@ -59,18 +73,49 @@ fun HomeScreen(navController: NavHostController = rememberNavController(), onCat
         ) {
             Text(
                 text = stringResource(id = R.string.homeTitle),
+                lineHeight = 35.sp,
                 textAlign = TextAlign.Center,
                 fontSize = MaterialTheme.typography.headlineLarge.fontSize,
-                modifier = Modifier.padding(bottom = 10.dp)
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(bottom = 5.dp, top = 3.dp)
+
             )
-            CategoriesGrid(modifier = Modifier.weight(3F), navController, onClick= onCategoryClick)
+            when (val state = categoriesState) {
+                is CategoryUIState.Success -> {
+                    CategoriesGrid(
+                        modifier = Modifier.weight(3F),
+                        categoryList = state.categories,
+                        navController = navController,
+                    )
+                }
+
+                is CategoryUIState.Error -> {
+                    TODO()
+                }
+            }
+
             Text(
                 text = stringResource(id = R.string.recommendations),
                 fontSize = MaterialTheme.typography.headlineMedium.fontSize,
-                modifier = Modifier.padding(vertical = 10.dp)
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 5.dp)
             )
             AppDivider()
-            RecommendationList(modifier = Modifier.weight(2F), onClick = onDetailClick)
+            Spacer(modifier = Modifier.height(10.dp))
+            when (val state = eventsState) {
+                is EventsRecommendedUIState.Success -> {
+                    RecommendationList(
+                        modifier = Modifier.height(200.dp),
+                        recoList = state.events,
+                        navController = navController,
+                    )
+                }
+
+                is EventsRecommendedUIState.Error -> {
+                    TODO()
+                }
+            }
         }
     }
 }
