@@ -1,6 +1,7 @@
 package com.example.lifechronicles.domain.entity
 
 class Event (
+    val id: String = "",
     val description: String = "",
     val img_url: String = "",
     val location: String = "",

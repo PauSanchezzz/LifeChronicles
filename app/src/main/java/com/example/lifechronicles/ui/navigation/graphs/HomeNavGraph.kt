@@ -9,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.example.lifechronicles.ui.screens.ChatListScreen
 import com.example.lifechronicles.ui.screens.ChatScreen
@@ -62,12 +64,20 @@ sealed class ChatScreens(val route: String) {
 
 fun NavGraphBuilder.eventNavGraph(navController: NavHostController) {
     navigation(
-        route = Graph.EVENTS, startDestination = EventsScreens.EventList.route
+        route = Graph.EVENTS, startDestination = EventsScreens.EventDetail.route
     ) {
-        composable(route = EventsScreens.EventList.route) {
-            EventsListScreen(navController, onEventClick = {
-                navController.navigate(EventsScreens.EventDetail.route)
+        composable(
+            route = "${EventsScreens.EventList.route}/{category}",
+            arguments = listOf(navArgument("category") {
+                type = NavType.StringType
             })
+        ) {
+            EventsListScreen(
+                navController, onEventClick = {
+                    navController.navigate(EventsScreens.EventDetail.route)
+                },
+                it.arguments?.getString("category").toString()
+            )
         }
         composable(route = EventsScreens.EventDetail.route) {
             EventDetailScreen(navController, onBackClick = {

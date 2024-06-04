@@ -28,6 +28,7 @@ import com.example.lifechronicles.R
 import com.example.lifechronicles.domain.entity.Category
 import com.example.lifechronicles.domain.entity.Event
 import com.example.lifechronicles.ui.navigation.AppScreens
+import com.example.lifechronicles.ui.navigation.graphs.EventsScreens
 import com.example.lifechronicles.ui.navigation.graphs.Graph
 
 @Composable
@@ -61,12 +62,12 @@ fun CategoriesGrid(
                 rows = GridCells.Fixed(2),
                 modifier = Modifier.padding(vertical = 6.dp)
             ) {
-                items(categoryList) { event ->
+                items(categoryList) { category ->
                     CategoryCard(
-                        event.name,
-                        event.img_url,
+                        category.name,
+                        category.img_url,
                         onClick = {
-                            navController.navigate(Graph.EVENTS)
+                            navController.navigate("${EventsScreens.EventList.route}/${category.name}")
                         },
                     )
                 }
