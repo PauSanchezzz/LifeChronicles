@@ -8,11 +8,17 @@ import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.lifechronicles.domain.entity.Event
+import com.example.lifechronicles.ui.navigation.graphs.EventsScreens
+import com.example.lifechronicles.ui.navigation.graphs.Graph
 
 
 @Composable
-fun RecommendationList(modifier: Modifier, recoList: List<Event>, onClick: () -> Unit) {
+fun RecommendationList(
+    modifier: Modifier, recoList: List<Event>,
+    navController: NavHostController,
+) {
     LazyRow(modifier) {
         items(recoList) { event ->
             RecommendationCard(
@@ -20,9 +26,11 @@ fun RecommendationList(modifier: Modifier, recoList: List<Event>, onClick: () ->
                 placeName = event.name,
                 location = event.location,
                 rating = event.rating,
-                onClick = onClick,
+                onClick = {
+                    navController.navigate(EventsScreens.EventDetail.route)
+                },
             )
-            Spacer(modifier=Modifier .width(10.dp))
+            Spacer(modifier = Modifier.width(10.dp))
         }
     }
 }

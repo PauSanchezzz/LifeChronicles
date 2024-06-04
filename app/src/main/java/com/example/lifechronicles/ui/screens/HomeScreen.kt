@@ -87,9 +87,8 @@ fun HomeScreen(
                 is CategoryUIState.Success -> {
                     CategoriesGrid(
                         modifier = Modifier.weight(3F),
-                        navController,
                         categoryList = state.categories,
-                        onClick = onCategoryClick
+                        navController = navController,
                     )
                 }
 
@@ -111,7 +110,7 @@ fun HomeScreen(
                     RecommendationList(
                         modifier = Modifier.height(200.dp),
                         recoList = state.events,
-                        onClick = onDetailClick
+                        navController = navController,
                     )
                 }
 

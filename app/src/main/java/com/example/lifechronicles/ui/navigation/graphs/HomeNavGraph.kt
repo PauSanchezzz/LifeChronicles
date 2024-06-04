@@ -30,22 +30,18 @@ fun HomeNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.Home.route) {
             HomeScreen(navController = navController, onCategoryClick = {
                 navController.navigate(Graph.EVENTS)
-            },
-                onDetailClick = {
-                    navController.navigate(Graph.EVENTS)
-                }
-            )
+            }, onDetailClick = {
+                navController.navigate(Graph.EVENTS)
+            })
         }
         composable(route = BottomBarScreen.Chat.route) {
-            ChatListScreen(
-                navController = navController,
-                onChatClick = {
-                    navController.navigate(Graph.CHATS)
-                }
-            )
+            ChatListScreen(navController = navController, onChatClick = {
+                navController.navigate(Graph.CHATS)
+            })
         }
         composable(route = BottomBarScreen.Profile.route) {
-            ProfileScreen(onSignOut = {
+            ProfileScreen(navController = navController, onSignOut = {
+                navController.popBackStack()
                 navController.navigate(Graph.AUTHENTICATION)
             })
         }
@@ -80,8 +76,7 @@ fun NavGraphBuilder.eventNavGraph(navController: NavHostController) {
         composable(route = EventsScreens.EventDetail.route) {
             EventDetailScreen(navController, onBackClick = {
                 navController.popBackStack(
-                    route = EventsScreens.EventList.route,
-                    inclusive = false
+                    route = EventsScreens.EventList.route, inclusive = false
                 )
             })
         }

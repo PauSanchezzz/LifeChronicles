@@ -50,7 +50,7 @@ import com.example.lifechronicles.ui.components.WhiteFilledButton
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit){
+fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit) {
     Scaffold(topBar = {
         TopAppBar(title = {
             Row(
@@ -58,7 +58,7 @@ fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit){
             ) {
                 Icon(
                     modifier = Modifier.clickable {
-                        onBackClick()
+                        navController.popBackStack()
                     },
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "arrow back"
@@ -102,7 +102,7 @@ fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit){
                     bottom.linkTo(parent.bottom)
                 }) {
                 Column(
-                    modifier = Modifier .padding(top=85.dp) ,
+                    modifier = Modifier.padding(top = 85.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {

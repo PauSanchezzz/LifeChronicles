@@ -23,17 +23,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.lifechronicles.R
 import com.example.lifechronicles.domain.entity.Category
 import com.example.lifechronicles.domain.entity.Event
 import com.example.lifechronicles.ui.navigation.AppScreens
+import com.example.lifechronicles.ui.navigation.graphs.Graph
 
 @Composable
 fun CategoriesGrid(
     modifier: Modifier,
-    navController: NavController,
+    navController: NavHostController,
     categoryList: List<Category>,
-    onClick: () -> Unit
 ) {
     Card(
         modifier
@@ -64,7 +65,9 @@ fun CategoriesGrid(
                     CategoryCard(
                         event.name,
                         event.img_url,
-                        onClick = onClick,
+                        onClick = {
+                            navController.navigate(Graph.EVENTS)
+                        },
                     )
                 }
             }
