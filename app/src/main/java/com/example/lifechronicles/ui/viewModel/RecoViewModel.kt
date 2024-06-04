@@ -7,7 +7,6 @@ import com.example.lifechronicles.ui.state.EventsUIState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class RecoViewModel : ViewModel() {

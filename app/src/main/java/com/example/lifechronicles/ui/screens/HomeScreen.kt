@@ -37,7 +37,9 @@ import com.example.lifechronicles.ui.components.AppDivider
 import com.example.lifechronicles.ui.components.CategoriesGrid
 import com.example.lifechronicles.ui.components.RecommendationList
 import com.example.lifechronicles.ui.navigation.graphs.BottomBarScreen
+import com.example.lifechronicles.ui.state.CategoryUIState
 import com.example.lifechronicles.ui.state.EventsUIState
+import com.example.lifechronicles.ui.viewModel.CategoryViewModel
 import com.example.lifechronicles.ui.viewModel.RecoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,9 +49,11 @@ fun HomeScreen(
     navController: NavHostController = rememberNavController(),
     onCategoryClick: () -> Unit,
     onDetailClick: () -> Unit,
-    recoViewModel: RecoViewModel = RecoViewModel()
+    recoViewModel: RecoViewModel = RecoViewModel(),
+    categoryViewModel: CategoryViewModel = CategoryViewModel()
 ) {
     val eventsState by recoViewModel.uiState.collectAsState()
+    val categoriesState by categoryViewModel.uiState.collectAsState()
 
     Scaffold(
         topBar = {
@@ -79,7 +83,21 @@ fun HomeScreen(
                     .padding(bottom = 5.dp, top = 3.dp)
 
             )
-            CategoriesGrid(modifier = Modifier.weight(3F), navController, onClick = onCategoryClick)
+            when (val state = categoriesState) {
+                is CategoryUIState.Success -> {
+                    CategoriesGrid(
+                        modifier = Modifier.weight(3F),
+                        navController,
+                        categoryList = state.categories,
+                        onClick = onCategoryClick
+                    )
+                }
+
+                is CategoryUIState.Error -> {
+                    TODO()
+                }
+            }
+
             Text(
                 text = stringResource(id = R.string.recommendations),
                 fontSize = MaterialTheme.typography.headlineMedium.fontSize,
