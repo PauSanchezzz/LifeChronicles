@@ -54,7 +54,6 @@ fun CategoryCard(categoryName: String, imageUrl: String, onClick: () -> Unit) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(90.dp)
-
                     .fillMaxWidth()
                     .clip(
                         RoundedCornerShape(

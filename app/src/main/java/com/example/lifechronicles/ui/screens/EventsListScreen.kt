@@ -60,7 +60,7 @@ fun EventsListScreen(navController: NavController, category: String) {
                         imageUrl = "https://i.redd.it/1f8jhybnge6c1.jpeg",
                         name = category,
                         location = "Location",
-                        rating = 5.0,
+                        rating = 3.0,
                         prices = listOf("$10", "$20"),
                         onClick = {
                             navController.navigate("${EventsScreens.EventDetail.route}/${TODO()}")
