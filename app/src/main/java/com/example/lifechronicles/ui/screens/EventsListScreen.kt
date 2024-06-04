@@ -76,7 +76,7 @@ fun EventsListScreen(
                                 rating = it.rating,
                                 price = it.price,
                                 onClick = {
-                                    navController.navigate("${EventsScreens.EventDetail.route}/${it.id}")
+                                    navController.navigate("${EventsScreens.EventDetail.route}/${it.id}/${category}")
                                 }
                             )
                         }

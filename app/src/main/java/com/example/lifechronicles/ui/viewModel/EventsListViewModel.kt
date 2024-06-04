@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class EventsListViewModel:ViewModel() {
-    private val _eventRepository = EventRepository()
+     val _eventRepository = EventRepository()
     private val _uiState = MutableStateFlow(EventsByCategoryUIState.Success(emptyList()))
     val uiState: StateFlow<EventsByCategoryUIState> = _uiState
 

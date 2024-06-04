@@ -142,7 +142,7 @@ fun ProfileScreen(
                     modifier = Modifier
                         .padding(top = 5.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = profileState.name,
+                    value =  if(profileState.success) profileState.name else "loading",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,

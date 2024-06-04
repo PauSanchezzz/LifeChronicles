@@ -78,13 +78,19 @@ fun NavGraphBuilder.eventNavGraph(navController: NavHostController) {
             )
         }
         composable(
-            route = "${EventsScreens.EventDetail.route}/{eventId}",
-            arguments = listOf(navArgument("eventId") {
-                type = NavType.StringType
-            })
+            route = "${EventsScreens.EventDetail.route}/{category}/{eventId}",
+            arguments = listOf(
+                navArgument("category") {
+                    type = NavType.StringType
+                },
+                navArgument("eventId") {
+                    type = NavType.StringType
+                }
+            )
         ) {
             EventDetailScreen(
                 navController,
+                it.arguments?.getString("category").toString(),
                 it.arguments?.getString("eventId").toString()
             )
         }

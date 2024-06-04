@@ -1,6 +1,8 @@
 package com.example.lifechronicles.infrastructure.repository
 
+import android.util.Log
 import com.example.lifechronicles.domain.entity.Event
+import com.example.lifechronicles.domain.entity.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.getField
 import kotlinx.coroutines.tasks.await
@@ -59,4 +61,30 @@ class EventRepository {
             null
         }
     }
+
+    suspend fun getEventById(category: String, idEvent: String): Event? {
+        return try {
+
+            val categoryDocument = firestore.document(category.lowercase()).get().await()
+            val eventsCollection = categoryDocument.reference.collection("events")
+            val eventDocument = eventsCollection.document(idEvent).get().await()
+            if (eventDocument.exists()) {
+                Event(
+                    id = eventDocument.id,
+                    description = eventDocument["description"].toString(),
+                    img_url = eventDocument["img_url"].toString(),
+                    location = eventDocument["location"].toString(),
+                    name = eventDocument["name"].toString(),
+                    price = eventDocument["price"].toString().toInt(),
+                    rating = eventDocument["rating"].toString().toDouble()
+                )
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+
 }

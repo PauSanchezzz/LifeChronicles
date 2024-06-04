@@ -19,12 +19,17 @@ class ProfileViewModel : ViewModel() {
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.value = _state.value.copy(
+                loading = true
+            )
             val user = _userRepository.getUserById(_authRepository.currentId())
             if (user != null) {
                 _state.value = _state.value.copy(
                     name = user.name,
                     lastName = user.lastName,
-                    email = user.email
+                    email = user.email,
+                    loading = false,
+                    success = true,
                 )
             }
         }

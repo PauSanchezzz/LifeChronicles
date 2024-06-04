@@ -1,6 +1,7 @@
 package com.example.lifechronicles.ui.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +34,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,12 +48,22 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.WhiteFilledButton
+import com.example.lifechronicles.ui.state.EventByIdUIState
+import com.example.lifechronicles.ui.viewModel.EventByIDViewModel
+import com.example.lifechronicles.ui.viewModel.EventsListViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EventDetailScreen(navController: NavController, eventId: String) {
+fun EventDetailScreen(
+    navController: NavController, eventId: String, category: String,
+    eventByIDViewModel: EventByIDViewModel = EventByIDViewModel()
+) {
+    val eventsState by eventByIDViewModel.uiState.collectAsState()
+    eventByIDViewModel.initState(category, idEvent = eventId)
+
+
     Scaffold(topBar = {
         TopAppBar(title = {
             Row(
@@ -64,7 +77,7 @@ fun EventDetailScreen(navController: NavController, eventId: String) {
                     contentDescription = "arrow back"
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
-                Text(stringResource(id = R.string.events))
+                Text(category)
             }
         })
     }, content = {
@@ -107,11 +120,11 @@ fun EventDetailScreen(navController: NavController, eventId: String) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = eventId, style = MaterialTheme.typography.headlineLarge
+                        text = eventsState.name, style = MaterialTheme.typography.headlineLarge
                     )
                     Spacer(modifier = Modifier.padding(vertical = 8.dp))
                     Text(
-                        text = """Description of the event lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. """,
+                        text = eventsState.description,
                         textAlign = TextAlign.Justify
                     )
                     Spacer(modifier = Modifier.padding(vertical = 8.dp))
@@ -119,25 +132,23 @@ fun EventDetailScreen(navController: NavController, eventId: String) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
-                        WhiteFilledButton(text = "Location",
+                        WhiteFilledButton(text = eventsState.location,
                             icon = Icons.Default.LocationCity,
                             onClick = { /*TODO*/ }
 
                         )
-                        WhiteFilledButton(text = "Rating",
+                        WhiteFilledButton(text = eventsState.rating.toString(),
                             icon = Icons.Default.Star,
                             onClick = { /*TODO*/ })
-                        WhiteFilledButton(text = "Category",
-                            icon = Icons.Default.Category,
-                            onClick = { /*TODO*/ })
                     }
-                    WhiteFilledButton(text = "Price",
+                    WhiteFilledButton(text = eventsState.price.toString(),
                         icon = Icons.Default.MonetizationOn,
                         onClick = { /*TODO*/ })
                     Spacer(modifier = Modifier.padding(vertical = 8.dp))
                     FilledTonalIconButton(modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp),
+                        enabled = false,
                         onClick = { /*TODO*/ }) {
                         Row(
                             modifier = Modifier
@@ -158,27 +169,30 @@ fun EventDetailScreen(navController: NavController, eventId: String) {
             }
 
         }
-    })
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(top = 65.dp),
-
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Box(
+        Column(
             modifier = Modifier
-                .size(245.dp)
-                .clip(CircleShape)
-                .border(8.dp, MaterialTheme.colorScheme.surface, CircleShape),
+                .fillMaxSize()
+                .padding(top = 65.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                painter = rememberAsyncImagePainter("https://i.pinimg.com/564x/68/4d/b1/684db1b66b0c19bbedb98a18ca48a411.jpg"),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
+            imageDetail(img_url = eventsState.img_url)
         }
-    }
+    })
 }
 
+@Composable
+fun imageDetail(img_url: String) {
+    Box(
+        modifier = Modifier
+            .size(245.dp)
+            .clip(CircleShape)
+            .border(8.dp, MaterialTheme.colorScheme.surface, CircleShape),
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(img_url),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}

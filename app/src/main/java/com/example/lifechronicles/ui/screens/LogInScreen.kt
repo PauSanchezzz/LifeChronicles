@@ -146,7 +146,7 @@ fun LogInScreen(
                 CustomTextField(
                     label = stringResource(id = R.string.email),
                     onValueChange = { logInViewModel.onEmailChange(it) },
-                    value = logInState.email
+                    value =logInState.email
                 )
                 Spacer(modifier = Modifier.height(15.dp))
                 CustomTextField(
