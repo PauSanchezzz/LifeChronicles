@@ -30,6 +30,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.lifechronicles.R
@@ -64,27 +65,40 @@ fun EventCard(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(imageUrl),
-                contentDescription = null,
-                modifier = Modifier
-                    .height(120.dp)
-                    .width(80.dp)
-                    .clip(
-                        RoundedCornerShape(
-                            topStart = 15.dp,
-                            topEnd = 0.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 15.dp
-                        )
-                    )
-            )
             Column(
+                modifier = Modifier
+                    .weight(1F),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.Start,
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(imageUrl),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .width(100.dp)
+                        .clip(
+                            RoundedCornerShape(
+                                topStart = 15.dp,
+                                topEnd = 0.dp,
+                                bottomEnd = 0.dp,
+                                bottomStart = 15.dp
+                            )
+                        )
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .weight(2F),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = name,
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(text = location)

@@ -38,7 +38,7 @@ import com.example.lifechronicles.ui.components.CategoriesGrid
 import com.example.lifechronicles.ui.components.RecommendationList
 import com.example.lifechronicles.ui.navigation.graphs.BottomBarScreen
 import com.example.lifechronicles.ui.state.CategoryUIState
-import com.example.lifechronicles.ui.state.EventsUIState
+import com.example.lifechronicles.ui.state.EventsRecommendedUIState
 import com.example.lifechronicles.ui.viewModel.CategoryViewModel
 import com.example.lifechronicles.ui.viewModel.RecoViewModel
 
@@ -104,7 +104,7 @@ fun HomeScreen(
             AppDivider()
             Spacer(modifier = Modifier.height(10.dp))
             when (val state = eventsState) {
-                is EventsUIState.Success -> {
+                is EventsRecommendedUIState.Success -> {
                     RecommendationList(
                         modifier = Modifier.height(200.dp),
                         recoList = state.events,
@@ -112,7 +112,7 @@ fun HomeScreen(
                     )
                 }
 
-                is EventsUIState.Error -> {
+                is EventsRecommendedUIState.Error -> {
                     TODO()
                 }
             }

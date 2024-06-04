@@ -67,9 +67,9 @@ fun RecommendationCard(
                 ) {
                 Text(
                     text = placeName,
-                    maxLines = 1,
-                    softWrap = false,
-                    overflow = TextOverflow.Ellipsis,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
