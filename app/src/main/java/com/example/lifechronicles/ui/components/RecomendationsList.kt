@@ -27,7 +27,7 @@ fun RecommendationList(
                 location = event.location,
                 rating = event.rating,
                 onClick = {
-                    navController.navigate(EventsScreens.EventDetail.route)
+                    navController.navigate("${EventsScreens.EventDetail.route}/${event.id}")
                 },
             )
             Spacer(modifier = Modifier.width(10.dp))

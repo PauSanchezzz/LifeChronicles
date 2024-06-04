@@ -23,10 +23,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.lifechronicles.R
 import com.example.lifechronicles.ui.components.EventCard
+import com.example.lifechronicles.ui.navigation.graphs.EventsScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EventsListScreen(navController: NavController, onEventClick: () -> Unit, category: String) {
+fun EventsListScreen(navController: NavController, category: String) {
     Scaffold(
         topBar = {
             TopAppBar(title = {
@@ -41,7 +42,7 @@ fun EventsListScreen(navController: NavController, onEventClick: () -> Unit, cat
                         contentDescription = "arrow back"
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
-                    Text(stringResource(id = R.string.events))
+                    Text(category)
                 }
             })
         },
@@ -61,7 +62,9 @@ fun EventsListScreen(navController: NavController, onEventClick: () -> Unit, cat
                         location = "Location",
                         rating = 5.0,
                         prices = listOf("$10", "$20"),
-                        onClick = onEventClick
+                        onClick = {
+                            navController.navigate("${EventsScreens.EventDetail.route}/${TODO()}")
+                        }
                     )
                 }
             }

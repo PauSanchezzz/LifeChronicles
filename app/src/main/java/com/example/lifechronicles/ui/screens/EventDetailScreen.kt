@@ -50,7 +50,7 @@ import com.example.lifechronicles.ui.components.WhiteFilledButton
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit) {
+fun EventDetailScreen(navController: NavController, eventId: String) {
     Scaffold(topBar = {
         TopAppBar(title = {
             Row(
@@ -107,7 +107,7 @@ fun EventDetailScreen(navController: NavController, onBackClick: () -> Unit) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Name Event", style = MaterialTheme.typography.headlineLarge
+                        text = eventId, style = MaterialTheme.typography.headlineLarge
                     )
                     Spacer(modifier = Modifier.padding(vertical = 8.dp))
                     Text(

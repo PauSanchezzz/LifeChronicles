@@ -73,18 +73,20 @@ fun NavGraphBuilder.eventNavGraph(navController: NavHostController) {
             })
         ) {
             EventsListScreen(
-                navController, onEventClick = {
-                    navController.navigate(EventsScreens.EventDetail.route)
-                },
+                navController,
                 it.arguments?.getString("category").toString()
             )
         }
-        composable(route = EventsScreens.EventDetail.route) {
-            EventDetailScreen(navController, onBackClick = {
-                navController.popBackStack(
-                    route = EventsScreens.EventList.route, inclusive = false
-                )
+        composable(
+            route = "${EventsScreens.EventDetail.route}/{eventId}",
+            arguments = listOf(navArgument("eventId") {
+                type = NavType.StringType
             })
+        ) {
+            EventDetailScreen(
+                navController,
+                it.arguments?.getString("eventId").toString()
+            )
         }
     }
 }

@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.lifechronicles.domain.entity.Event
 import com.example.lifechronicles.ui.state.EventsUIState
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.getField
 import kotlinx.coroutines.tasks.await
 
 class EventRepository {
@@ -11,12 +12,22 @@ class EventRepository {
 
 
     suspend fun getEventsRecommended(): List<Event>? {
-                val eventsList = mutableListOf<Event>()
+        val eventsList = mutableListOf<Event>()
         return try {
             val documento = firestore.document("museo").get().await()
             val events = documento.reference.collection("events").get().await()
             for (event in events) {
-                eventsList.add(event.toObject(Event::class.java))
+                eventsList.add(
+                    Event(
+                        id = event.id,
+                        description = event.getField<String>("description").toString(),
+                        img_url = event.getField<String>("img_url").toString(),
+                        location = event.getField<String>("location").toString(),
+                        name = event.getField<String>("name").toString(),
+                        price = event.getField<Int>("price").toString().toInt(),
+                        rating = event.getField<Double>("rating").toString().toDouble()
+                    )
+                )
             }
             eventsList
         } catch (e: Exception) {
