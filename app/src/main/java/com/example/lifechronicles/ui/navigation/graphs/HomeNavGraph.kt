@@ -28,11 +28,7 @@ fun HomeNavGraph(navController: NavHostController) {
         startDestination = BottomBarScreen.Home.route
     ) {
         composable(route = BottomBarScreen.Home.route) {
-            HomeScreen(navController = navController, onCategoryClick = {
-                navController.navigate(Graph.EVENTS)
-            }, onDetailClick = {
-                navController.navigate(Graph.EVENTS)
-            })
+            HomeScreen(navController = navController)
         }
         composable(route = BottomBarScreen.Chat.route) {
             ChatListScreen(navController = navController, onChatClick = {

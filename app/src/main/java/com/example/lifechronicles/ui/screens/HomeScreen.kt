@@ -47,8 +47,6 @@ import com.example.lifechronicles.ui.viewModel.RecoViewModel
 @Composable
 fun HomeScreen(
     navController: NavHostController = rememberNavController(),
-    onCategoryClick: () -> Unit,
-    onDetailClick: () -> Unit,
     recoViewModel: RecoViewModel = RecoViewModel(),
     categoryViewModel: CategoryViewModel = CategoryViewModel()
 ) {
@@ -60,7 +58,7 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.welcomeUser),
+                        text = stringResource(id = R.string.welcome),
                     )
                 }
             )
