@@ -38,7 +38,7 @@ import com.example.lifechronicles.ui.components.CategoriesGrid
 import com.example.lifechronicles.ui.components.RecommendationList
 import com.example.lifechronicles.ui.navigation.graphs.BottomBarScreen
 import com.example.lifechronicles.ui.state.CategoryUIState
-import com.example.lifechronicles.ui.state.EventsUIState
+import com.example.lifechronicles.ui.state.EventsRecommendedUIState
 import com.example.lifechronicles.ui.viewModel.CategoryViewModel
 import com.example.lifechronicles.ui.viewModel.RecoViewModel
 
@@ -47,8 +47,6 @@ import com.example.lifechronicles.ui.viewModel.RecoViewModel
 @Composable
 fun HomeScreen(
     navController: NavHostController = rememberNavController(),
-    onCategoryClick: () -> Unit,
-    onDetailClick: () -> Unit,
     recoViewModel: RecoViewModel = RecoViewModel(),
     categoryViewModel: CategoryViewModel = CategoryViewModel()
 ) {
@@ -60,7 +58,7 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.welcomeUser),
+                        text = stringResource(id = R.string.welcome),
                     )
                 }
             )
@@ -87,9 +85,8 @@ fun HomeScreen(
                 is CategoryUIState.Success -> {
                     CategoriesGrid(
                         modifier = Modifier.weight(3F),
-                        navController,
                         categoryList = state.categories,
-                        onClick = onCategoryClick
+                        navController = navController,
                     )
                 }
 
@@ -107,15 +104,15 @@ fun HomeScreen(
             AppDivider()
             Spacer(modifier = Modifier.height(10.dp))
             when (val state = eventsState) {
-                is EventsUIState.Success -> {
+                is EventsRecommendedUIState.Success -> {
                     RecommendationList(
                         modifier = Modifier.height(200.dp),
                         recoList = state.events,
-                        onClick = onDetailClick
+                        navController = navController,
                     )
                 }
 
-                is EventsUIState.Error -> {
+                is EventsRecommendedUIState.Error -> {
                     TODO()
                 }
             }

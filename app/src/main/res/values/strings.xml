@@ -15,7 +15,7 @@
     <string name="categories">Categories</string>
     <string name="recommendations">Recommendations</string>
     <string name="events">Events</string>
-    <string name="prices">Prices: %1$s - %2$s</string>
+    <string name="price">Price: $%1$s</string>
     <string name="tileConversations">Conversations</string>
     <string name="signout">Sign Out</string>
     <string name="profile">Profile</string>

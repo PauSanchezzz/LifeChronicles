@@ -48,12 +48,14 @@ import com.example.lifechronicles.R
 import androidx.compose.material3.Card
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavHostController
 import com.example.lifechronicles.ui.viewModel.ProfileViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
+    navController: NavHostController,
     onSignOut: () -> Unit,
     profileViewModel: ProfileViewModel = ProfileViewModel()
 ) {
@@ -140,7 +142,7 @@ fun ProfileScreen(
                     modifier = Modifier
                         .padding(top = 5.dp),
                     shape = RoundedCornerShape(30.dp),
-                    value = profileState.name,
+                    value =  if(profileState.success) profileState.name else "loading",
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Person2,
