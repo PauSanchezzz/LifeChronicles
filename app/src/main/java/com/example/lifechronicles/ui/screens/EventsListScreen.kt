@@ -61,7 +61,7 @@ fun EventsListScreen(navController: NavController, category: String) {
                         name = category,
                         location = "Location",
                         rating = 3.0,
-                        prices = listOf("$10", "$20"),
+                        price = 10,
                         onClick = {
                             navController.navigate("${EventsScreens.EventDetail.route}/${TODO()}")
                         }

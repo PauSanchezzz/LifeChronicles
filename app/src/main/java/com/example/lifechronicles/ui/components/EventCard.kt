@@ -41,7 +41,7 @@ fun EventCard(
     name: String,
     location: String,
     rating: Double,
-    prices: List<String>,
+    price: Int,
     onClick: () -> Unit,
 ) {
     Card(
@@ -97,7 +97,7 @@ fun EventCard(
                         )
                     }
                 }
-                Text(text = stringResource(R.string.prices, prices[0], prices[1]))
+                Text(text = stringResource(R.string.price, price))
             }
         }
     }
